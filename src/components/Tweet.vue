@@ -64,13 +64,6 @@ export default {
     }
   }
 }
-
-// const sendBtn = document.getElementById('tweet');
-
-// sendBtn.addEventListener('click', (e) => {
-//   e.preventDefault();
-
-// })
 </script>
 
 <style>
