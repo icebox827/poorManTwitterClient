@@ -3,8 +3,8 @@
   <section>
     <div class="container">
       <form @submit.prevent="createTweet" id="tweetForm" class="form">
-        <input type="text" name="name" id="name" placeholder="Your name" class="name" >
-        <input type="text" name="content" id="content" placeholder="Tweet here" class="tweet" >
+        <input type="text" name="name" id="name" placeholder="Your name" class="name" :v-model="newTweet.name">
+        <input type="text" name="content" id="content" placeholder="Tweet here" class="tweet" :v-model="newTweet.content">
         <button id="tweet" class="btn btn-primary">Tweet</button>
       </form>
     </div>
@@ -43,7 +43,7 @@ export default {
       newTweet: {
         'Date': '',
         'Tweet': '',
-        'Name': ''
+        'Name': '',
       },
       tweetList: []
     }
