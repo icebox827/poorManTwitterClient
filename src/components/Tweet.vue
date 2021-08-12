@@ -41,14 +41,21 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/tweet/` );
+      const response = await axios.get(`http://127.0.0.1:8000/tweet/`);
 
-      this.tweet = response.data
+      this.tweets = response.data
     } catch(e) {
       return e
     }
   }
 }
+
+const sendBtn = document.getElementById('tweet');
+
+sendBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+})
 </script>
 
 <style>
