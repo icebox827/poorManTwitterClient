@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-const baseURL = 'http://127.0.0.1:8000/tweet/`' ;
+// import axios from 'axios';
+// const baseURL = 'http://127.0.0.1:8000/tweet/`' ;
 
 export default {
   name: "display",
@@ -41,32 +41,32 @@ export default {
     }
   },
 
-  async created() {
-    try {
-      const response = await axios.get(baseURL);
+  // async created() {
+  //   try {
+  //     const response = await axios.get(baseURL);
 
-      this.tweets = response.data;
-    } catch(e) {
-      return e
-    }
-  },
-  methods: {
-    async createTweet() {
-      const response = await axios.post(baseURL, {content: this.newTweet});
+  //     this.tweets = response.data;
+  //   } catch(e) {
+  //     return e
+  //   }
+  // },
+  // methods: {
+  //   async createTweet() {
+  //     const response = await axios.post(baseURL, {content: this.newTweet});
 
-      this.tweets = [...this.tweets, response.data];
+  //     this.tweets = [...this.tweets, response.data];
       
-      this.newTweet = '';
-    }
-  }
+  //     this.newTweet = '';
+  //   }
+  // }
 }
 
-const sendBtn = document.getElementById('tweet');
+// const sendBtn = document.getElementById('tweet');
 
-sendBtn.addEventListener('click', (e) => {
-  e.preventDefault();
+// sendBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
 
-})
+// })
 </script>
 
 <style>

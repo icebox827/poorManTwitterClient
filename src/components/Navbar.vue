@@ -1,6 +1,8 @@
 <template>
-  <nav class="navbar">
-    <h1>Poor Man's Twitter</h1>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Poor Man's Twitter</span>
+    </div>
   </nav>
 </template>
 
