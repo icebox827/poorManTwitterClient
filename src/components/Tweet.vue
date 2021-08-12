@@ -30,22 +30,33 @@
 
 <script>
 import axios from 'axios';
+const baseURL = 'http://127.0.0.1:8000/tweet/`' ;
 
 export default {
   name: "display",
   data() {
     return {
-      tweets: []
+      tweets: [],
+      newTweet: ''
     }
   },
 
   async created() {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/tweet/`);
+      const response = await axios.get(baseURL);
 
-      this.tweets = response.data
+      this.tweets = response.data;
     } catch(e) {
       return e
+    }
+  },
+  methods: {
+    async createTweet() {
+      const response = await axios.post(baseURL, {content: this.newTweet});
+
+      this.tweets = [...this.tweets, response.data];
+      
+      this.newTweet = '';
     }
   }
 }
