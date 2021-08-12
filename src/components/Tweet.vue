@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     async createTweet() {
-      const response = await axios.post(baseURL, {content: this.newTweet});
+      const response = await axios.post(baseURL);
       this.tweetList.push(await response.data)
     }
   }
