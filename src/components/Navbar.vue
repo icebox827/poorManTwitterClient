@@ -8,13 +8,12 @@
 
 <style>
   .navbar{
-    background-color: rgb(61, 61, 250);
+    width: 100%;
     color: white;
     height: 5vh;
   }
 
   .navbar h1 {
     text-align: center;
-    background-color: rgb(61, 61, 250);
   }
 </style>
