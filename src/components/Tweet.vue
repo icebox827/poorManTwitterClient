@@ -21,8 +21,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="tweet in tweets" :key="tweet.id">
-            <td>{{tweet.created_at}}1</td>
+          <tr v-for="tweet in tweetList" :key="tweet.id">
+            <td>{{tweet.created_at}}</td>
             <td>{{tweet.content}}</td>
             <td>{{tweet.name}}</td>
           </tr>
@@ -37,7 +37,7 @@ import axios from 'axios';
 const baseURL = 'http://127.0.0.1:8000/tweet/' ;
 
 export default {
-  name: "display",
+  name: 'display',
   data() {
     return {
       newTweet: {
@@ -45,14 +45,14 @@ export default {
         'Tweet': '',
         'Name': ''
       },
-      tweets: []
+      tweetList: []
     }
   },
 
   async created() {
     try {
       const response = await axios.get(baseURL);
-      this.tweets = response.json();
+      this.tweetList = response.data;
     } catch(e) {
       return e
     }
