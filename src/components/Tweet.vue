@@ -2,54 +2,61 @@
   <!--Form Section -->
   <section>
     <div class="container">
-      <form action="" id="tweetForm" class="form">
-        <input type="text" name="name" id="name" placeholder="Your name" class="name">
-        <input type="text" name="inputTweet" id="inputTweet" placeholder="Tweet here" class="tweet">
-        <input type="button" id="tweet" value="Tweet" class="btn">
+      <form @submit.prevent="createTweet" id="tweetForm" class="form">
+        <input type="text" name="name" id="name" placeholder="Your name" class="name" >
+        <input type="text" name="content" id="content" placeholder="Tweet here" class="tweet" >
+        <button id="tweet" class="btn btn-primary">Tweet</button>
       </form>
     </div>
   </section>
   <!-- Tweet Table -->
   <section id="display">
     <div class="container">
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Tweet</th>
-          <th>name</th>
-        </tr>
-        <tr>
-          <td v-for="tweet of tweets" :key="tweet.id">{{tweet.create_at}}</td>
-          <td v-for="tweet of tweets" :key="tweet.id">{{tweet.content}}</td>
-          <td v-for="tweet of tweets" :key="tweet.id">{{tweet.name}}</td>
-        </tr>
+      <table class="table table-success table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Tweet</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="tweet in tweets" :key="tweet.id">
+            <td>{{tweet.created_at}}1</td>
+            <td>{{tweet.content}}</td>
+            <td>{{tweet.name}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </section>
 </template>
 
 <script>
-// import axios from 'axios';
-// const baseURL = 'http://127.0.0.1:8000/tweet/`' ;
+import axios from 'axios';
+const baseURL = 'http://127.0.0.1:8000/tweet/' ;
 
 export default {
   name: "display",
   data() {
     return {
-      tweets: [],
-      newTweet: ''
+      newTweet: {
+        'Date': '',
+        'Tweet': '',
+        'Name': ''
+      },
+      tweets: []
     }
   },
 
-  // async created() {
-  //   try {
-  //     const response = await axios.get(baseURL);
-
-  //     this.tweets = response.data;
-  //   } catch(e) {
-  //     return e
-  //   }
-  // },
+  async created() {
+    try {
+      const response = await axios.get(baseURL);
+      this.tweets = response.json();
+    } catch(e) {
+      return e
+    }
+  },
   // methods: {
   //   async createTweet() {
   //     const response = await axios.post(baseURL, {content: this.newTweet});
@@ -85,13 +92,8 @@ export default {
     width: 60vh;
   }
 
-  .form .btn {
-    background-color: rgb(61, 61, 250);
-    color: white;
-  }
-
   table {
-    width: 70%;
+    width: 100%;
     border: 1px solid gray;
   }
 </style>
