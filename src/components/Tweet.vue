@@ -57,15 +57,12 @@ export default {
       return e
     }
   },
-  // methods: {
-  //   async createTweet() {
-  //     const response = await axios.post(baseURL, {content: this.newTweet});
-
-  //     this.tweets = [...this.tweets, response.data];
-      
-  //     this.newTweet = '';
-  //   }
-  // }
+  methods: {
+    async createTweet() {
+      const response = await axios.post(baseURL, {content: this.newTweet});
+      this.tweetList.push(await response.data)
+    }
+  }
 }
 
 // const sendBtn = document.getElementById('tweet');
